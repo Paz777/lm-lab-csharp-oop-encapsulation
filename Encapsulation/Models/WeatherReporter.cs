@@ -14,9 +14,10 @@ namespace Encapsulation.Models
 
         public string DisplayWeatherReport()
         {
-            double newTemp = (9.0 / 5.0) * Temperature + 32;
-            return $"I am in {Location} and it is {Check1()}. {Check2()}. The temperature in Fahrenheit is {newTemp}.";
+            return $"I am in {Location} and it is {Check1()}. {Check2()}. The temperature in Fahrenheit is {ConvertToFahrenheit(Temperature)}.";
         }
+
+        private double ConvertToFahrenheit(double celsius) => (9.0 / 5.0) * celsius + 32;
 
         public string Check1()
         {
