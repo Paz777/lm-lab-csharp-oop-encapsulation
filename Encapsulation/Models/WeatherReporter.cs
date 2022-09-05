@@ -12,7 +12,7 @@ namespace Encapsulation.Models
             Temperature = temperature;
         }
 
-        public string Print()
+        public string DisplayWeatherReport()
         {
             double newTemp = (9.0 / 5.0) * Temperature + 32;
             return $"I am in {Location} and it is {Check1()}. {Check2()}. The temperature in Fahrenheit is {newTemp}.";
