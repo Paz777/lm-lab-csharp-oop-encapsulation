@@ -40,4 +40,3 @@ namespace Encapsulation.Models
             => _temperature > 30 ? "It's too hot 🥵!" : (_temperature < 10 ? "It's too cold 🥶!" : "Ahhh...it's just right 😊!");
     }
 }
-
