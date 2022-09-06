@@ -3,8 +3,14 @@ namespace Encapsulation.Models
 {
     public class WeatherReporter
     {
-        public string _location;
-        public double _temperature;
+        private string _location;
+        private double _temperature;
+        private Dictionary<string, string> _cityLocationSymbol = new Dictionary<string, string>()
+        {
+            {"London", "🌦" },
+            {"California", "🌅" },
+            {"Cape Town", "🌤" }
+        };
 
         public WeatherReporter(string location, double temperature)
         {
@@ -14,51 +20,26 @@ namespace Encapsulation.Models
 
         public string DisplayWeatherReport()
         {
-            return $"I am in {_location} and it is {DisplayLocationSymbol()}. {DisplayTemperatureInfo()}. The temperature in Fahrenheit is {ConvertToFahrenheit(_temperature)}.";
+            return $"I am in {_location} and it is {GetLocationSymbol()}. {DisplayTemperatureInfo()}. The temperature in Fahrenheit is {ConvertToFahrenheit(_temperature)}.";
         }
 
-        private double ConvertToFahrenheit(double celsius) => (9.0 / 5.0) * celsius + 32;
+        private double ConvertToFahrenheit(double celsius)
+            => (9.0 / 5.0) * celsius + 32;
 
-        public string DisplayLocationSymbol()
+        public string GetLocationSymbol()
         {
-            if (_location == "London")
+            try
             {
-
-                return "🌦";
-
+                return _cityLocationSymbol[_location];
             }
-            else if (_location == "California")
+            catch (Exception ex)
             {
-
-                return "🌅";
-
+                return "🔆";
             }
-            else if (_location == "Cape Town")
-            {
-
-                return "🌤";
-
-            }
-            return "🔆";
         }
 
         public string DisplayTemperatureInfo()
-        {
-            if (_temperature > 30)
-            {
-
-                return "It's too hot 🥵!";
-
-            }
-            else if (_temperature < 10)
-            {
-
-                return "It's too cold 🥶!";
-
-            }
-            return "Ahhh...it's just right 😊!";
-        }
-
+            => _temperature > 30 ? "It's too hot 🥵!" : (_temperature < 10 ? "It's too cold 🥶!" : "Ahhh...it's just right 😊!");
     }
 }
 
