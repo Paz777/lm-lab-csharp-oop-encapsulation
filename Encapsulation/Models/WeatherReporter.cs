@@ -14,12 +14,12 @@ namespace Encapsulation.Models
 
         public string DisplayWeatherReport()
         {
-            return $"I am in {_location} and it is {DisplayWeatherSymbol()}. {DisplayTemperatureInfo()}. The temperature in Fahrenheit is {ConvertToFahrenheit(_temperature)}.";
+            return $"I am in {_location} and it is {DisplayLocationSymbol()}. {DisplayTemperatureInfo()}. The temperature in Fahrenheit is {ConvertToFahrenheit(_temperature)}.";
         }
 
         private double ConvertToFahrenheit(double celsius) => (9.0 / 5.0) * celsius + 32;
 
-        public string DisplayWeatherSymbol()
+        public string DisplayLocationSymbol()
         {
             if (_location == "London")
             {
