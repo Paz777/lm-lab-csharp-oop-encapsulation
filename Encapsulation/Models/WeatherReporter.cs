@@ -19,14 +19,12 @@ namespace Encapsulation.Models
         }
 
         public string DisplayWeatherReport()
-        {
-            return $"I am in {_location} and it is {GetLocationSymbol()}. {DisplayTemperatureInfo()}. The temperature in Fahrenheit is {ConvertToFahrenheit(_temperature)}.";
-        }
+            => $"I am in {_location} and it is {GetLocationSymbol()}. {DisplayTemperatureInfo()}. The temperature in Fahrenheit is {ConvertToFahrenheit(_temperature)}.";
 
         private double ConvertToFahrenheit(double celsius)
             => (9.0 / 5.0) * celsius + 32;
 
-        public string GetLocationSymbol()
+        private string GetLocationSymbol()
         {
             try
             {
@@ -38,7 +36,7 @@ namespace Encapsulation.Models
             }
         }
 
-        public string DisplayTemperatureInfo()
+        private string DisplayTemperatureInfo()
             => _temperature > 30 ? "It's too hot 🥵!" : (_temperature < 10 ? "It's too cold 🥶!" : "Ahhh...it's just right 😊!");
     }
 }
